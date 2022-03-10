@@ -12,11 +12,12 @@ const getReportedPosts = () => {
 };
 
 const isLiked = (id) => {
+  console.log(likedPostsId?.length && !!likedPostsId.includes(id));
     return likedPostsId?.length && !!likedPostsId.includes(id);
 };
-
+//error 1 solved by plus to push
 const addToLiked = (id) => {
-    likedPostsId.plus(id); 
+    likedPostsId.push(id); 
     showPosts(posts);
 };
 
@@ -59,7 +60,7 @@ const createPost = (post) => {
     //error4:comments user show and comments showing
     const postuser=post.comments[0].user;
     const postcomment=post.comments[0].text;
-    console.log(postuser);
+    //console.log(postuser);
     const div = document.createElement( "article" );
     div.classList.add( "post" );
     div.innerHTML = `
