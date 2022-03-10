@@ -1,4 +1,4 @@
-let posts=[ ];
+let posts=[  ];
 
 const likedPostsId = [];
 const reportedPostsId = [];
@@ -8,6 +8,7 @@ const getLikedPosts = () => {
 };
 
 const getReportedPosts = () => {
+  //console.log(posts.filter((post) => reportedPostsId.includes(post.id)));
     return posts.filter((post) => reportedPostsId.includes(post.id));
 };
 
@@ -48,7 +49,7 @@ const switchTab = (id) => {
         document.getElementById( "reported" ).style.display = "block";
         document.getElementById( "posts" ).style.display = "none";
         document.getElementById( "liked" ).style.display = "none";
-
+     
         displayReportedPosts();
     }
 };
@@ -158,10 +159,11 @@ const displayLikedPosts = () => {
         document.getElementById( "liked" ).appendChild(div);
     });
 };
-
+//error5 :solved when invisiable click show only inviable data
+//changing the name 
 const displayReportedPosts = () => {
     const reportedPosts = getReportedPosts();
-    posts.forEach((post) => {
+    reportedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "reported" ).appendChild(div);
     });
