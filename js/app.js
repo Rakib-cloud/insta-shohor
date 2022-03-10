@@ -25,9 +25,11 @@ const reportPost = (id) => {
     const remainingPosts = posts.filter((post) => !reportedPostsId.includes(post.id));
     showPosts(remainingPosts);
 };
-
+//error 3 solved if length less then 30 then show full length
 const displayContent = (text) => {
-    return text.length < 30 ? 'text' : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
+  
+    return text.length < 30 ? text : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
+    
 };
 
 const switchTab = (id) => {
@@ -49,9 +51,11 @@ const switchTab = (id) => {
         displayReportedPosts();
     }
 };
-
+//error2:solved inthe card the user image is visiable now
 const createPost = (post) => {
     const image = post.image;
+    //for solving error2 create element userimage
+    const userimage=post.userImage;
     const div = document.createElement( "article" );
     div.classList.add( "post" );
     div.innerHTML = `
@@ -62,7 +66,7 @@ const createPost = (post) => {
                     target="_blank"
                     class="post__avatar"
                   >
-                    <img src="${image}" alt="User Picture" />
+                    <img src="${userimage}" alt="User Picture" />
                   </a>
                   <a href="#" class="post__user">phero</a>
                 </div>
