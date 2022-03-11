@@ -4,6 +4,7 @@ const likedPostsId = [];
 const reportedPostsId = [];
 
 const getLikedPosts = () => {
+ 
     return posts.filter((post) => likedPostsId.includes(post.id));
 };
 
@@ -37,21 +38,35 @@ const displayContent = (text) => {
 const switchTab = (id) => {
   
     if (id === "posts") {
+      
+      
         document.getElementById( "posts" ).style.display = "grid";
         document.getElementById( "liked" ).style.display = "none";
         document.getElementById( "reported" ).style.display = "none";
-        //document.getElementById( "liked" ).innerHTML="";
+        document.getElementById( "report" ).style.display = "none";
+        //bonus div style
+        document.getElementById( "bonus" ).style.display = "block";
     } else if (id === "liked") {
-      //document.getElementById( "liked" ).innerHTML="";
+      
+       document.getElementById( "like" ).style.display='block';
         document.getElementById( "liked" ).style.display = "block";
         document.getElementById( "posts" ).style.display = "none";
         document.getElementById( "reported" ).style.display = "none";
+        document.getElementById( "report" ).style.display = "none";
+        //bonus div style
+        document.getElementById( "bonus" ).style.display = "none";
 
         displayLikedPosts();
     } else {
+       
         document.getElementById( "reported" ).style.display = "block";
+        document.getElementById( "report" ).style.display = "block";
+        
         document.getElementById( "posts" ).style.display = "none";
         document.getElementById( "liked" ).style.display = "none";
+        document.getElementById( "like" ).style.display = "none";
+        //bonus div style
+        document.getElementById( "bonus" ).style.display = "none";
      
         displayReportedPosts();
     }
@@ -156,15 +171,21 @@ const showPosts = (posts) => {
 };
 
 const displayLikedPosts = () => {
+  document.getElementById( "liked" ).innerHTML='';
+  
     const likedPosts = getLikedPosts();
     likedPosts.forEach((post) => {
+      
         const div = createPost(post);
+        
         document.getElementById( "liked" ).appendChild(div);
     });
 };
 //error5 :solved when invisiable click show only inviable data
 //changing the name 
+//error 6 :work
 const displayReportedPosts = () => {
+  document.getElementById( "reported" ).innerHTML='';
     const reportedPosts = getReportedPosts();
     reportedPosts.forEach((post) => {
         const div = createPost(post);
